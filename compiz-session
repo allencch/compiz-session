@@ -1,0 +1,21 @@
+#!/bin/sh
+
+if test -z "$DBUS_SESSION_BUS_ADDRESS"; then
+  eval `dbus-launch --sh-syntax --exit-with-session`
+fi
+
+export XDG_CURRENT_DESKTOP="Compiz-Standalone"
+
+compiz --replace ccp & wmpid=$!
+sleep 1
+
+if [ -f ~/.compiz-session  ]; then
+  source ~/.compiz-session &
+else
+  xterm &
+fi
+
+dex -a -e Compiz-Standalone
+
+# Wait for WM
+wait $wmpid
