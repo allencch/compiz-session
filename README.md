@@ -11,5 +11,5 @@ Please configure Compiz according to [this](https://wiki.archlinux.org/index.php
 To logout the session, do save all the important works, and then run
 
 ```
-killall compiz-session
+compiz-session-logout
 ```
